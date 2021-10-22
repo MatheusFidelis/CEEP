@@ -13,6 +13,7 @@ const createTask = (event) => {
 
   task.innerHTML = content;
 
+  task.appendChild(createConcludeButton());
   list.appendChild(task);
   input.value = " ";
 };
@@ -20,3 +21,14 @@ const createTask = (event) => {
 const newTask = document.querySelector("[data-form-button]");
 
 newTask.addEventListener("click", createTask);
+
+const createConcludeButton = () => {
+  const concludeButton = document.createElement("button");
+  concludeButton.classList.add("check-button");
+  concludeButton.innerText = "conclude";
+  concludeButton.addEventListener("click", () => {
+    console.log("Clicked");
+  });
+
+  return concludeButton;
+};
