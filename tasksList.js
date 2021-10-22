@@ -15,6 +15,7 @@
     task.innerHTML = content;
 
     task.appendChild(createConcludeButton());
+    task.appendChild(createDeleteTaskButton());
     list.appendChild(task);
     input.value = " ";
   };
@@ -26,7 +27,7 @@
   const createConcludeButton = () => {
     const concludeButton = document.createElement("button");
     concludeButton.classList.add("check-button");
-    concludeButton.innerText = "conclude";
+    concludeButton.innerText = "Conclude";
     concludeButton.addEventListener("click", concludeTask);
 
     return concludeButton;
@@ -38,5 +39,22 @@
     const taskComplete = concludeButton.parentElement;
 
     taskComplete.classList.toggle("done");
+  };
+
+  const createDeleteTaskButton = () => {
+    const deleteTaskButton = document.createElement("button");
+
+    deleteTaskButton.innerText = "Delete";
+    deleteTaskButton.addEventListener("click", deleteTask);
+
+    return deleteTaskButton;
+  };
+
+  const deleteTask = (event) => {
+    const deleteTaskButton = event.target;
+
+    const taskComplete = deleteTaskButton.parentElement;
+    taskComplete.remove();
+    return deleteTaskButton;
   };
 })();
